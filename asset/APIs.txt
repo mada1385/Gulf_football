@@ -1,0 +1,17 @@
+POST   /api/users/login
+GET    /api/users/facebook
+GET    /api/users/google
+POST   /api/users/signup
+POST   /api/news/create-news
+GET    /api/news/all-news
+GET    /api/news/:newsId --> get one news
+PUT    /api/news/:newsId --> update news
+DELETE /api/news/:newsId --> delete news
+POST   /api/news/add-comment
+POST   /api/news/do-reply
+POST   /api/news/like-news
+POST   /api/news/dislike-news
+POST   /api/news/trend   --> make trend
+GET    /api/news/all-trends
+PUT    /api/news/add-to-favorites/:newsId
+PUT    /api/news/remove-from-favorites/:newsId

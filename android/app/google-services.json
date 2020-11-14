@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "388519890573",
+    "firebase_url": "https://gulf-goal.firebaseio.com",
+    "project_id": "gulf-goal",
+    "storage_bucket": "gulf-goal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388519890573:android:c98464899d4560ba3bdcc4",
+        "android_client_info": {
+          "package_name": "com.Gulf.gulf_goal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388519890573-rq4ijp79teeamhdfb37cdv7rr4ku6ou1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBywtwNP3bpx5A-fgOKlv7qqCRimZKYgEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388519890573-rq4ijp79teeamhdfb37cdv7rr4ku6ou1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
