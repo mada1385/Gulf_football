@@ -1,22 +1,8 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gulf_football/components/countrylist.dart';
-import 'package:gulf_football/screens/contactusscreen.dart';
-import 'package:gulf_football/screens/countrylistscreen.dart';
-import 'package:gulf_football/screens/forgetpasswordscreen.dart';
-import 'package:gulf_football/screens/gamescreen.dart';
-import 'package:gulf_football/screens/homescreen.dart';
-import 'package:gulf_football/screens/favouritesscreen.dart';
-import 'package:gulf_football/screens/nointernetscreen.dart';
-import 'package:gulf_football/screens/profileoptions.dart';
-import 'package:gulf_football/screens/signinscreen.dart';
-import 'package:gulf_football/screens/signupscreen.dart';
-import 'package:gulf_football/screens/teamslistscreen.dart';
 import 'package:provider/provider.dart';
 import 'package:gulf_football/screens/splash_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'config/provider.dart';
 
 void main() async {
@@ -31,9 +17,11 @@ void main() async {
         ],
         supportedLocales: [
           Locale("en", "US"),
-          Locale("fa", "IR"), // OR Locale('ar', 'AE') OR Other RTL locales
+          Locale("fa", "IR"),
+          Locale(
+              'ar', ''), // Arabic// OR Locale('ar', 'AE') OR Other RTL locales
         ],
-        locale: Locale("fa", "IR"),
+        locale: Locale('ar', ''),
         title: 'Gulf football',
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,

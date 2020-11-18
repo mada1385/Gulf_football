@@ -25,7 +25,7 @@ class SoccerApi {
           "https://apiv2.apifootball.com/?action=get_events&from=$date&to=$date${leaugeid == null ? null : id}&APIkey=290ec875c73e45bba490754b61ba1c1dabf300d2d30d5dd81bb25eab35f59a16");
       print(res.statusCode);
       var body = jsonDecode(res.body);
-
+      print(res.body);
       if (res.statusCode == 200) {
         // this mean that we are connected to the data base
 
@@ -37,6 +37,7 @@ class SoccerApi {
               .toList();
           return matches;
         } else {
+          print("failde");
           return null;
         }
       }

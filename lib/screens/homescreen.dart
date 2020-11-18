@@ -33,22 +33,10 @@ class _HomescreenState extends State<Homescreen> {
     });
   }
 
-  void logincheck() async {
-    SharedPreferences p = await SharedPreferences.getInstance();
-    String x = p.get("token");
-    if (x != null) {
-      Provider.of<Userprovider>(context, listen: false).settoken(x);
-    } else {
-      Provider.of<Userprovider>(context, listen: false).settoken(null);
-    }
-    print(Provider.of<Userprovider>(context, listen: false).token);
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    logincheck();
   }
 
   @override
