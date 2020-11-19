@@ -30,14 +30,18 @@ class Homenewsscreen extends StatefulWidget {
 
 class _HomenewsscreenState extends State<Homenewsscreen> {
   Timer _clockTimer;
+  void islogged() {
+    if (Provider.of<Userprovider>(context, listen: false).token != null) {
+      Provider.of<Userprovider>(context, listen: false)
+          .loadlivegamesdetailsDetails();
+    }
+  }
+
   void initState() {
     super.initState();
     Provider.of<Userprovider>(context, listen: false)
         .loadlivegamesdetailsDetails();
-    _clockTimer = Timer.periodic(
-        Duration(seconds: 20),
-        (_) => Provider.of<Userprovider>(context, listen: false)
-            .loadlivegamesdetailsDetails());
+    _clockTimer = Timer.periodic(Duration(seconds: 20), (_) => islogged());
   }
 
   void dispose() {
@@ -114,11 +118,23 @@ class _HomenewsscreenState extends State<Homenewsscreen> {
                               builder: (context, snapshot) {
                                 //the future builder is very intersting to use when you work with api
                                 if (snapshot.hasData) {
-                                  print(
-                                      "stream data lenght${snapshot.data.length}");
-                                  return Livematchesscoreboard(
-                                    livematches: snapshot.data,
-                                  );
+                                  if (snapshot.data["success"] == true) {
+                                    List<dynamic> matchesList =
+                                        snapshot.data["result"];
+                                    print(
+                                        "Api service: ${snapshot.data}"); // to debug
+                                    List<SoccerMatch> matches = matchesList
+                                        .map((dynamic item) =>
+                                            SoccerMatch.fromJson(item))
+                                        .toList();
+                                    return Livematchesscoreboard(
+                                      livematches: matches,
+                                    );
+                                  } else {
+                                    return Livematchesscoreboard(
+                                      livematches: null,
+                                    );
+                                  }
                                 } else {
                                   return Expanded(
                                     child: Center(
@@ -184,31 +200,42 @@ class Livematchesscoreboard extends StatelessWidget {
   final List<SoccerMatch> livematches;
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-          scrollDirection: Axis.horizontal, height: 170, autoPlay: true),
-      items: livematches.map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 2,
-                          color: Colors.black54,
-                          offset: Offset(0, .75),
-                        )
-                      ]),
-                  width: double.infinity,
-                  child: matchTile(i, context)),
-            );
-          },
-        );
-      }).toList(),
-    );
+    return livematches == null
+        ? Center(
+            child: Card(
+              elevation: 20,
+              child: Center(
+                  child: Container(
+                child: Text("لا يوجد مباريات حاليا"),
+              )),
+            ),
+          )
+        : CarouselSlider(
+            options: CarouselOptions(
+                scrollDirection: Axis.horizontal, height: 170, autoPlay: true),
+            items: livematches.map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8.0)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 2,
+                                color: Colors.black54,
+                                offset: Offset(0, .75),
+                              )
+                            ]),
+                        width: double.infinity,
+                        child: matchTile(i, context)),
+                  );
+                },
+              );
+            }).toList(),
+          );
   }
 }

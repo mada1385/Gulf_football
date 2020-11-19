@@ -88,7 +88,7 @@ class FavouriteAPI {
     }
   }
 
-  Future<List<SoccerMatch>> getFavLiveMatches(String token) async {
+  Future getFavLiveMatches(String token) async {
     try {
       Response res = await get(
           "http://gulf-goal.herokuapp.com/api/teams/following-live-matches",
@@ -97,21 +97,15 @@ class FavouriteAPI {
             "Content-Type": "application/json",
             "Accept": "application/json"
           });
-      print("live match stayusvode ${res.statusCode}");
+      print("live match stayus code ${res.statusCode}");
       var body = jsonDecode(res.body);
       print(res.body);
       if (res.statusCode == 200) {
-        if (res.body.length >= 1) {
-          List<dynamic> matchesList = body["result"];
-          print("Api service: ${body}"); // to debug
-          List<SoccerMatch> matches = matchesList
-              .map((dynamic item) => SoccerMatch.fromJson(item))
-              .toList();
-          return matches;
-        } else {
-          print("failed");
-          return [];
-        }
+        print("send sucssefuly");
+        return body;
+      } else {
+        print("failed");
+        return body;
       }
     } catch (e) {
       print(e);

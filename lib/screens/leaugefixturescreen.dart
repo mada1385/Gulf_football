@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:gulf_football/components/fixturelist.dart';
 import 'package:gulf_football/components/leaguefixturelist.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
+import 'package:gulf_football/config/provider.dart';
 import 'package:gulf_football/models/match.dart';
 import 'package:gulf_football/screens/nointernetscreen.dart';
 import 'package:gulf_football/screens/standingsscreen.dart';
 import 'package:gulf_football/services/footballapi.dart';
 import 'package:gulf_football/services/standingsAPI.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class Leaguesfixturescreen extends StatefulWidget {
   final String leaugeidtab;
@@ -31,9 +33,9 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
       Leaguefixturelist(),
       Standingscreen(),
     ];
-    return ConnectivityWidgetWrapper(
-      offlineWidget: Nointernetscreen(),
-      child: Expanded(
+    return Expanded(
+      child: ConnectivityWidgetWrapper(
+        offlineWidget: Nointernetscreen(),
         child: Container(
           child: Column(
             children: [
@@ -53,6 +55,9 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
                                   onPressed: () {
                                     setState(() {
                                       leaguetab = 0;
+                                      Provider.of<Userprovider>(context,
+                                              listen: false)
+                                          .loadAllgamesdetailsDetails();
                                     });
                                   },
                                   child: Column(

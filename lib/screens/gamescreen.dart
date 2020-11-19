@@ -111,109 +111,105 @@ class _GamescreenState extends State<Gamescreen> {
       offlineWidget: Nointernetscreen(),
       child: Scaffold(
         body: SafeArea(
-          child: Expanded(
-            child: Container(
-              color: Color(0xffF7F8FA),
-              child: Column(children: [
-                Container(
-                    decoration: BoxDecoration(boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 15.0,
-                          offset: Offset(0.0, .75))
-                    ], color: Colors.white),
-                    height: SizeConfig.safeBlockVertical * 14,
-                    child: Padding(
-                      padding: EdgeInsets.all(2),
-                      child: CalendarStrip(
-                        startDate: startDate,
-                        endDate: endDate,
-                        selectedDate:
-                            Provider.of<Userprovider>(context).selectedDate,
-                        onDateSelected: onSelect,
-                        onWeekSelected: onWeekSelect,
-                        dateTileBuilder: dateTileBuilder,
-                        iconColor: Colors.black,
-                        monthNameWidget: _monthNameWidget,
-                        // markedDates: markedDates,
-                        containerDecoration: BoxDecoration(color: Colors.white),
-                        addSwipeGesture: true,
-                      ),
-                    )),
-                SizedBox(
-                  height: 2,
-                ),
-                Container(
-                  color: Color(0xffFCFCFC),
+          child: Container(
+            color: Color(0xffF7F8FA),
+            child: Column(children: [
+              Container(
+                  decoration: BoxDecoration(boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 15.0,
+                        offset: Offset(0.0, .75))
+                  ], color: Colors.white),
+                  height: SizeConfig.safeBlockVertical * 14,
+                  child: Padding(
+                    padding: EdgeInsets.all(2),
+                    child: CalendarStrip(
+                      startDate: startDate,
+                      endDate: endDate,
+                      selectedDate:
+                          Provider.of<Userprovider>(context).selectedDate,
+                      onDateSelected: onSelect,
+                      onWeekSelected: onWeekSelect,
+                      dateTileBuilder: dateTileBuilder,
+                      iconColor: Colors.black,
+                      monthNameWidget: _monthNameWidget,
+                      // markedDates: markedDates,
+                      containerDecoration: BoxDecoration(color: Colors.white),
+                      addSwipeGesture: true,
+                    ),
+                  )),
+              SizedBox(
+                height: 2,
+              ),
+              Container(
+                color: Color(0xffFCFCFC),
 
-                  height: SizeConfig.blockSizeVertical * 6,
-                  //color: Theme.of(context).primaryColor,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: Provider.of<Userprovider>(context)
-                          .leaguestripe
-                          .length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              // loadDetails();
+                height: SizeConfig.blockSizeVertical * 6,
+                //color: Theme.of(context).primaryColor,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount:
+                        Provider.of<Userprovider>(context).leaguestripe.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            // loadDetails();
 
-                              Provider.of<Userprovider>(context, listen: false)
-                                  .setleaugeindex(index);
-                              Provider.of<Userprovider>(context, listen: false)
-                                  .loadAllgamesdetailsDetails();
-                              Provider.of<Userprovider>(context, listen: false)
-                                  .setgamescreenindex(index);
-                            });
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Container(
-                              width: 110,
-                              // padding: EdgeInsets.all(8.0),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                color: Provider.of<Userprovider>(context)
-                                            .gamescreenindex ==
-                                        index
-                                    ? Colors.green
-                                    : Color(0xFFFFFFFF),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(3),
-                                  child: Text(
-                                    Provider.of<Userprovider>(context)
-                                        .leaguestripe[index],
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.blockSizeVertical * 1.9,
-                                      fontWeight: FontWeight.w500,
-                                      color: Provider.of<Userprovider>(context)
-                                                  .gamescreenindex ==
-                                              index
-                                          ? Colors.white
-                                          : Color(0xFFB4C1C4),
-                                    ),
+                            Provider.of<Userprovider>(context, listen: false)
+                                .setleaugeindex(index);
+                            Provider.of<Userprovider>(context, listen: false)
+                                .loadAllgamesdetailsDetails();
+                            Provider.of<Userprovider>(context, listen: false)
+                                .setgamescreenindex(index);
+                          });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Container(
+                            width: 110,
+                            // padding: EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              color: Provider.of<Userprovider>(context)
+                                          .gamescreenindex ==
+                                      index
+                                  ? Colors.green
+                                  : Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(3),
+                                child: Text(
+                                  Provider.of<Userprovider>(context)
+                                      .leaguestripe[index],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize:
+                                        SizeConfig.blockSizeVertical * 1.9,
+                                    fontWeight: FontWeight.w500,
+                                    color: Provider.of<Userprovider>(context)
+                                                .gamescreenindex ==
+                                            index
+                                        ? Colors.white
+                                        : Color(0xFFB4C1C4),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        );
-                      }),
-                ),
-                mainscreen[Provider.of<Userprovider>(context).gamescreenindex ==
-                        0
-                    ? 0
-                    : Provider.of<Userprovider>(context).gamescreenindex == 1
-                        ? 0
-                        : 1],
-              ]),
-            ),
+                        ),
+                      );
+                    }),
+              ),
+              mainscreen[Provider.of<Userprovider>(context).gamescreenindex == 0
+                  ? 0
+                  : Provider.of<Userprovider>(context).gamescreenindex == 1
+                      ? 0
+                      : 1],
+            ]),
           ),
         ),
       ),

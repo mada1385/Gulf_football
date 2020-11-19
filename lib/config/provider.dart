@@ -115,7 +115,7 @@ class Userprovider extends ChangeNotifier {
   loadlivegamesdetailsDetails() async {
     livegamesuserController = new StreamController();
     FavouriteAPI().getFavLiveMatches(token).then((res) async {
-      print('LoadDetails of ${res.length}');
+      print("from provider $res");
       livegamesuserController.add(res);
       notifyListeners();
       return res;
