@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:gulf_football/models/match.dart';
 import 'package:gulf_football/components/matchtile.dart';
 

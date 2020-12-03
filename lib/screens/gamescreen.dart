@@ -3,8 +3,10 @@ import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gulf_football/components/allgameslist.dart';
+import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:gulf_football/config/provider.dart';
+import 'package:gulf_football/screens/favmatchesscreen.dart';
 import 'package:gulf_football/screens/leaugefixturescreen.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +25,15 @@ class _GamescreenState extends State<Gamescreen> {
   onSelect(data) {
     HapticFeedback.lightImpact();
     Provider.of<Userprovider>(context, listen: false).setdate(data);
-    Provider.of<Userprovider>(context, listen: false).islive();
-    Provider.of<Userprovider>(context, listen: false)
-        .loadAllgamesdetailsDetails();
+    // Provider.of<Userprovider>(context, listen: false).islive();
+    if (Provider.of<Userprovider>(context, listen: false).gamescreenindex ==
+        0) {
+      Provider.of<Userprovider>(context, listen: false)
+          .loadfavgamesdetailsDetails();
+    } else {
+      Provider.of<Userprovider>(context, listen: false)
+          .loadAllgamesdetailsDetails();
+    }
   }
 
   onWeekSelect(data) {
@@ -84,7 +92,7 @@ class _GamescreenState extends State<Gamescreen> {
           right: SizeConfig.blockSizeHorizontal * .5,
           bottom: SizeConfig.blockSizeVertical * .5),
       decoration: BoxDecoration(
-        color: !isSelectedDate ? Colors.transparent : Colors.green,
+        color: !isSelectedDate ? Colors.transparent : accentcolor,
         borderRadius: BorderRadius.all(Radius.circular(60)),
       ),
       child: Column(
@@ -104,7 +112,11 @@ class _GamescreenState extends State<Gamescreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> mainscreen = [Allgameslist(), Leaguesfixturescreen()];
+    List<Widget> mainscreen = [
+      Favouritematchesscreen(),
+      Allgameslist(),
+      Leaguesfixturescreen()
+    ];
 
     SizeConfig().init(context);
     return ConnectivityWidgetWrapper(
@@ -175,7 +187,7 @@ class _GamescreenState extends State<Gamescreen> {
                               color: Provider.of<Userprovider>(context)
                                           .gamescreenindex ==
                                       index
-                                  ? Colors.green
+                                  ? accentcolor
                                   : Color(0xFFFFFFFF),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -188,7 +200,7 @@ class _GamescreenState extends State<Gamescreen> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        SizeConfig.blockSizeVertical * 1.9,
+                                        SizeConfig.blockSizeVertical * 1.5,
                                     fontWeight: FontWeight.w500,
                                     color: Provider.of<Userprovider>(context)
                                                 .gamescreenindex ==
@@ -207,8 +219,8 @@ class _GamescreenState extends State<Gamescreen> {
               mainscreen[Provider.of<Userprovider>(context).gamescreenindex == 0
                   ? 0
                   : Provider.of<Userprovider>(context).gamescreenindex == 1
-                      ? 0
-                      : 1],
+                      ? 1
+                      : 2],
             ]),
           ),
         ),

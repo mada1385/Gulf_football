@@ -52,14 +52,20 @@ class CustomTextfield extends StatelessWidget {
                 borderSide: new BorderSide(color: accentcolor)),
             hintText: hint,
             labelText: label,
-            labelStyle: TextStyle(color: textcolor),
+            labelStyle: TextStyle(
+              color: textcolor,
+              fontFamily: 'cairo',
+            ),
             prefixIcon: Icon(
               priffix,
-              color: Colors.green,
+              color: accentcolor,
             ),
             prefixText: ' ',
             suffix: suffix,
-            suffixStyle: const TextStyle(color: Colors.green)),
+            suffixStyle: const TextStyle(
+              color: accentcolor,
+              fontFamily: 'cairo',
+            )),
         validator: validators[validator]);
   }
 }

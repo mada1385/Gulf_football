@@ -85,9 +85,9 @@ class _LineupscreenState extends State<Lineupscreen> {
                   color: textcolor2, fontSize: 25, fontWeight: FontWeight.w600),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          // SizedBox(
+          //   height: 20,
+          // ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -105,32 +105,34 @@ class _LineupscreenState extends State<Lineupscreen> {
                         ], color: Colors.white),
                         child: Column(
                           children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    "${buttonindex == 0 ? widget.match.lineup.lineuphome[index]["lineup_number"] : widget.match.lineup.lineupaway[index]["lineup_number"]} - ",
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "${buttonindex == 0 ? widget.match.lineup.lineuphome[index]["lineup_number"] : widget.match.lineup.lineupaway[index]["lineup_number"]} - ",
+                                      style: TextStyle(
+                                          color: textcolor2,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+
+                                  Text(
+                                    buttonindex == 0
+                                        ? widget.match.lineup.lineuphome[index]
+                                            ["lineup_player"]
+                                        : widget.match.lineup.lineupaway[index]
+                                            ["lineup_player"],
                                     style: TextStyle(
-                                        color: textcolor2,
+                                        color: textcolor,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                ),
-
-                                Text(
-                                  buttonindex == 0
-                                      ? widget.match.lineup.lineuphome[index]
-                                          ["lineup_player"]
-                                      : widget.match.lineup.lineupaway[index]
-                                          ["lineup_player"],
-                                  style: TextStyle(
-                                      color: textcolor,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                // Text(match.lineup.lineuphome[index]["lineup_player"]),
-                              ],
+                                  // Text(match.lineup.lineuphome[index]["lineup_player"]),
+                                ],
+                              ),
                             ),
                           ],
                         ));

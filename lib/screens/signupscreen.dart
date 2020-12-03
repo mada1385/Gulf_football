@@ -6,10 +6,8 @@ import 'package:gulf_football/components/texts.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:gulf_football/models/country.dart';
 import 'package:gulf_football/models/user.dart';
 import 'package:gulf_football/screens/countrylistscreen.dart';
-import 'package:gulf_football/screens/homescreen.dart';
 import 'package:gulf_football/screens/nointernetscreen.dart';
 import 'package:gulf_football/screens/signinscreen.dart';
 import 'package:gulf_football/services/authAPI.dart';
@@ -168,15 +166,18 @@ class _SignupscreenState extends State<Signupscreen> {
                                         new BorderSide(color: accentcolor)),
                                 hintText: "اعد كتابة كلمة السر",
                                 labelText: "تأكيد كلمة السر",
-                                labelStyle: TextStyle(color: textcolor),
+                                labelStyle: TextStyle(
+                                  color: textcolor,
+                                  fontFamily: 'cairo',
+                                ),
                                 prefixIcon: Icon(
                                   Icons.lock_outline,
-                                  color: Colors.green,
+                                  color: accentcolor,
                                 ),
                                 prefixText: ' ',
                                 // suffix: ,
                                 suffixStyle:
-                                    const TextStyle(color: Colors.green)),
+                                    const TextStyle(color: accentcolor)),
                             validator: (val) => MatchValidator(
                                     errorText: 'passwords do not match')
                                 .validateMatch(confirmpasswordcontroller.text,
@@ -223,6 +224,7 @@ class _SignupscreenState extends State<Signupscreen> {
                               child: Text(
                                 "سجل دخول",
                                 style: TextStyle(
+                                    fontFamily: 'cairo',
                                     color: accentcolor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold),
@@ -344,6 +346,7 @@ class Signupsnackbutton extends StatelessWidget {
                         child: Text(
                           signup["msg"],
                           style: TextStyle(
+                              fontFamily: 'cairo',
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w600),
@@ -373,6 +376,7 @@ class Signupsnackbutton extends StatelessWidget {
                         child: Text(
                           signup["msg"],
                           style: TextStyle(
+                              fontFamily: 'cairo',
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w600),
@@ -389,7 +393,10 @@ class Signupsnackbutton extends StatelessWidget {
             },
             child: Text(
               'تسجيل حساب',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'cairo',
+              ),
             ),
           ),
         ),

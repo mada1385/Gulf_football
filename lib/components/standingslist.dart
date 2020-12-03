@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gulf_football/config/colors.dart';
 
 Widget buildTable(List _table) {
   List<Widget> teams = [];
@@ -24,9 +25,19 @@ Widget buildTable(List _table) {
                         width: 30,
                       ),
                       team['team_name'].toString().length > 11
-                          ? Text(team['team_name'].toString().substring(0, 11) +
-                              '...')
-                          : Text(team['team_name'].toString()),
+                          ? Text(
+                              team['team_name'].toString().substring(0, 11) +
+                                  '...',
+                              style: TextStyle(
+                                fontFamily: 'cairo',
+                              ),
+                            )
+                          : Text(
+                              team['team_name'].toString(),
+                              style: TextStyle(
+                                fontFamily: 'cairo',
+                              ),
+                            ),
                     ],
                   ),
                 ],
@@ -42,7 +53,11 @@ Widget buildTable(List _table) {
                   Text(team['overall_league_L'].toString()),
                   Text(team['overall_league_GF'].toString()),
                   Text(team['overall_league_GA'].toString()),
-                  Text(team['overall_league_GF'].toString()),
+                  Text(
+                    team['overall_league_PTS'].toString(),
+                    style: TextStyle(
+                        color: accentcolor, fontWeight: FontWeight.w500),
+                  ),
                 ],
               ),
             ),

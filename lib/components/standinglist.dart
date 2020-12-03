@@ -36,14 +36,20 @@ class _StandinglistState extends State<Standinglist> {
                       children: [
                         Text(
                           'Pos',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
                           'Club',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                       ],
                     ),
@@ -54,31 +60,52 @@ class _StandinglistState extends State<Standinglist> {
                       children: [
                         Text(
                           'PL',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'W',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'D',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'L',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'Gf',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'GA',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                         Text(
                           'Pts',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'cairo',
+                          ),
                         ),
                       ],
                     ),

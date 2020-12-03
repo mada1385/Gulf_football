@@ -1,6 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gulf_football/config/provider.dart';
 import 'package:gulf_football/models/user.dart';
 import 'package:http/http.dart';
@@ -12,6 +11,35 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Authapi {
   // final GoogleSignIn _googleSignIn = GoogleSignIn();
   // final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future postimage(File image, String token) async {
+    try {
+      final favouriteteam = await post(
+          "https://gulf-goal.herokuapp.com/api/users/update-image",
+          headers: {
+            // 'Content-Type': 'application/json',
+            // 'Accept': 'application/json',
+            "Authorization": "bearer $token",
+          },
+          body: {
+            "image": image,
+          });
+      var body;
+      print("Api service: ${favouriteteam.body}");
+      body = jsonDecode(favouriteteam.body);
+      if (body["success"]) {
+        print("success");
+        return body;
+      } else {
+        print("success");
+        return body;
+      }
+    } catch (e) {
+      print(e);
+      return e;
+    }
+  }
+
   Future register(Users x, BuildContext context) async {
     try {
       final signup =

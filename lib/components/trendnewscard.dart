@@ -13,7 +13,7 @@ class TrendNewscard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: Container(
           height: SizeConfig.blockSizeVertical * 25,
           width: double.infinity,
@@ -50,7 +50,7 @@ class TrendNewscard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
                     news.title,
-                    style: TextStyle(color: textcolor),
+                    style: TextStyle(color: textcolor, fontFamily: 'cairo'),
                   ),
                 ),
               ),

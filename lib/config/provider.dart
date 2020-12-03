@@ -1,24 +1,27 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:gulf_football/models/news.dart';
 import 'package:gulf_football/models/teams.dart';
 import 'package:gulf_football/services/favAPI.dart';
 import 'package:gulf_football/services/footballapi.dart';
 import 'package:intl/intl.dart';
 
 class Userprovider extends ChangeNotifier {
-  String initvaluenews = "all tags";
-  String initvaluetrends = "all tags";
+  String initvaluenews = "كل الاخبار";
+  String initvaluetrends = "كل الاخبار";
   String token, username;
   int leaugeindex = 0, gamescreenindex = 0;
   List<Teams> favteams = List<Teams>();
+  List<News> allnews = List<News>();
+  List<News> alltrends = List<News>();
   bool issigningup = false;
   StreamController allgamesuserController;
   StreamController livegamesuserController;
+  StreamController favgamesuserController;
   DateFormat formatter = DateFormat('yyyy-MM-dd');
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 0));
   DateTime currentdate = DateTime.now().subtract(Duration(days: 0));
-  List<String> leagueid = [null, null, "148", "195", "262", "468"];
+  List<String> leagueid = [null, null, "468", "148", "262", "195", "589"];
   List<Teams> sortfavteams;
   void getfav() async {
     sortfavteams = await FavouriteAPI().getfavourite(token);
@@ -30,12 +33,13 @@ class Userprovider extends ChangeNotifier {
 
   List<String> leaguestripe;
   List<String> notliveleague = [
-    "كل المباريات",
     "★  المفضلة",
+    "كل المباريات",
+    "La Liga",
     "Premiere League",
-    "Bundesliga",
     "Serie A",
-    "La Liga"
+    "Bundesliga",
+    "Champions League"
   ];
 
   void islive() {
@@ -46,6 +50,16 @@ class Userprovider extends ChangeNotifier {
       leaguestripe = notliveleague;
       notifyListeners();
     }
+  }
+
+  void setallnews(List<News> userindex) {
+    allnews = userindex;
+    notifyListeners();
+  }
+
+  void setalltrends(List<News> userindex) {
+    alltrends = userindex;
+    notifyListeners();
   }
 
   void setinitvaluenews(String userindex) {
@@ -117,6 +131,18 @@ class Userprovider extends ChangeNotifier {
     FavouriteAPI().getFavLiveMatches(token).then((res) async {
       print("from provider $res");
       livegamesuserController.add(res);
+      notifyListeners();
+      return res;
+    });
+  }
+
+  loadfavgamesdetailsDetails() async {
+    favgamesuserController = new StreamController();
+    FavouriteAPI()
+        .getFavMatches(token, formatter.format(selectedDate))
+        .then((res) async {
+      print("from provider $res");
+      favgamesuserController.add(res);
       notifyListeners();
       return res;
     });

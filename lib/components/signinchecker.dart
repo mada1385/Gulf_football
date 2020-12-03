@@ -39,7 +39,8 @@ class Signinchecher extends StatelessWidget {
             },
             child: Text(
               "تسجيل دخول",
-              style: TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 25, color: Colors.white, fontFamily: 'cairo'),
             ),
           ),
         ),

@@ -21,6 +21,7 @@ class Profileoptioncard extends StatelessWidget {
               title: Text(
                 title,
                 style: TextStyle(
+                  fontFamily: 'cairo',
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

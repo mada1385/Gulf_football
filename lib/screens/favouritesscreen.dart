@@ -61,7 +61,10 @@ class _FavoutitesscreenState extends State<Favoutitesscreen> {
                               title: new TextField(
                                 controller: controller,
                                 decoration: new InputDecoration(
-                                    hintText: 'بحث', border: InputBorder.none),
+                                    hintStyle: TextStyle(
+                                        fontFamily: 'cairo', fontSize: 15),
+                                    hintText: 'بحث',
+                                    border: InputBorder.none),
                               ),
                               trailing: new IconButton(
                                 icon: new Icon(

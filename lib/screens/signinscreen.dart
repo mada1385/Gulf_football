@@ -6,16 +6,11 @@ import 'package:gulf_football/components/customtextfield.dart';
 import 'package:gulf_football/components/texts.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'package:gulf_football/config/provider.dart';
 import 'package:gulf_football/models/user.dart';
 import 'package:gulf_football/screens/forgetpasswordscreen.dart';
 import 'package:gulf_football/screens/homescreen.dart';
 import 'package:gulf_football/screens/signupscreen.dart';
 import 'package:gulf_football/services/authAPI.dart';
-import 'package:gulf_football/services/favAPI.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 
 import 'nointernetscreen.dart';
 
@@ -150,6 +145,7 @@ class _SigninscreenState extends State<Signinscreen> {
                                 child: Text(
                                   "اضغط هنا",
                                   style: TextStyle(
+                                      fontFamily: 'cairo',
                                       color: accentcolor,
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
@@ -188,6 +184,7 @@ class _SigninscreenState extends State<Signinscreen> {
                               child: Text(
                                 "انشأ حساب",
                                 style: TextStyle(
+                                    fontFamily: 'cairo',
                                     color: accentcolor,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold),
@@ -303,6 +300,7 @@ class Snackbutton extends StatelessWidget {
                   child: Text(
                     signup["msg"],
                     style: TextStyle(
+                        fontFamily: 'cairo',
                         color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
@@ -331,6 +329,7 @@ class Snackbutton extends StatelessWidget {
                   child: Text(
                     signup["msg"],
                     style: TextStyle(
+                        fontFamily: 'cairo',
                         color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
@@ -347,7 +346,10 @@ class Snackbutton extends StatelessWidget {
       },
       child: Text(
         'تسجيل دخول',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(
+          color: Colors.white,
+          fontFamily: 'cairo',
+        ),
       ),
     );
   }

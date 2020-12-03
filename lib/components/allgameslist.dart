@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:gulf_football/components/fixturelist.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/provider.dart';
-import 'package:gulf_football/services/footballapi.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +33,9 @@ class _AllgameslistState extends State<Allgameslist> {
   }
 
   void dispose() {
-    // TODO: implement dispose
+    _clockTimer.cancel();
     super.dispose();
     // _userController.close();
-    _clockTimer.cancel();
   }
 
   @override

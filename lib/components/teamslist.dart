@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gulf_football/components/texts.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/provider.dart';
-import 'package:gulf_football/models/Leagues.dart';
-import 'package:gulf_football/models/country.dart';
 import 'package:gulf_football/models/teams.dart';
-import 'package:gulf_football/screens/homescreen.dart';
 import 'package:provider/provider.dart';
 
 class Teamslist extends StatelessWidget {

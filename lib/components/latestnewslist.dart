@@ -24,7 +24,7 @@ class _LatestnewslistState extends State<Latestnewslist> {
     List<News> sortednews;
     if (!widget.ishomescreen) {
       print(widget.news);
-      if (Provider.of<Userprovider>(context).initvaluenews == "all tags") {
+      if (Provider.of<Userprovider>(context).initvaluenews == "كل الاخبار") {
         setState(() {
           print("notsorted");
           sortednews = widget.news;
@@ -32,7 +32,8 @@ class _LatestnewslistState extends State<Latestnewslist> {
       } else {
         setState(() {
           print(Provider.of<Userprovider>(context).initvaluenews);
-          sortednews = widget.news
+          sortednews = Provider.of<Userprovider>(context, listen: false)
+              .allnews
               .where((i) =>
                   i.tag == Provider.of<Userprovider>(context).initvaluenews)
               .toList();
@@ -48,6 +49,12 @@ class _LatestnewslistState extends State<Latestnewslist> {
     }
   }
 
+  List<News> relateddata(News x) {
+    List<News> sortednews;
+    sortednews = widget.news.where((i) => i.tag == x.tag).toList();
+    return sortednews;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,6 +68,7 @@ class _LatestnewslistState extends State<Latestnewslist> {
                     MaterialPageRoute(
                         builder: (context) => Newsdetails(
                               news: i,
+                              relatednews: relateddata(i),
                             )));
               },
               child: Newscard(

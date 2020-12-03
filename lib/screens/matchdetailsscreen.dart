@@ -62,10 +62,6 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                       widget.match.fixture.status.league,
                       style: TextStyle(fontSize: 15, color: textcolor),
                     ),
-                    Flexible(
-                        child: SizedBox(
-                      height: 20,
-                    )),
                     Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -81,7 +77,7 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: Colors.green,
+                              color: accentcolor,
                               fontSize: SizeConfig.blockSizeVertical * 5,
                             ),
                           ),
@@ -99,7 +95,9 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                       height: 20,
                     )),
                     Text(
-                      widget.match.fixture.status.status,
+                      widget.match.fixture.status.status == ""
+                          ? widget.match.fixture.time
+                          : widget.match.fixture.status.status,
                       style: TextStyle(fontSize: 20, color: textcolor),
                     ),
                     Row(
@@ -113,7 +111,10 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                           },
                           child: Text(
                             "الاحصائيات",
-                            style: TextStyle(color: textcolor, fontSize: 20),
+                            style: TextStyle(
+                                color: textcolor,
+                                fontSize: 20,
+                                fontFamily: 'cairo'),
                           ),
                         ),
                         FlatButton(
@@ -124,7 +125,10 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
                           },
                           child: Text(
                             "التشكيل",
-                            style: TextStyle(color: textcolor, fontSize: 20),
+                            style: TextStyle(
+                                color: textcolor,
+                                fontSize: 20,
+                                fontFamily: 'cairo'),
                           ),
                         )
                       ],
@@ -135,7 +139,7 @@ class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(right: 20, left: 20, top: 20),
-                  child: Card(elevation: 20, child: detailscreen[tapindex]),
+                  child: detailscreen[tapindex],
                 ),
               )
             ],

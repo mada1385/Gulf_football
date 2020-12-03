@@ -1,17 +1,11 @@
-import 'dart:async';
-
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:gulf_football/components/fixturelist.dart';
 import 'package:gulf_football/components/leaguefixturelist.dart';
+import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:gulf_football/config/provider.dart';
-import 'package:gulf_football/models/match.dart';
 import 'package:gulf_football/screens/nointernetscreen.dart';
 import 'package:gulf_football/screens/standingsscreen.dart';
-import 'package:gulf_football/services/footballapi.dart';
-import 'package:gulf_football/services/standingsAPI.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class Leaguesfixturescreen extends StatefulWidget {
@@ -65,9 +59,10 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
                                       Text(
                                         "المباريات",
                                         style: TextStyle(
+                                          fontFamily: 'cairo',
                                           fontSize: 25,
                                           color: leaguetab == 0
-                                              ? Colors.green
+                                              ? accentcolor
                                               : Colors.grey,
                                         ),
                                       ),
@@ -76,7 +71,7 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
                                       ),
                                       Container(
                                         color: leaguetab == 0
-                                            ? Colors.green
+                                            ? accentcolor
                                             : Colors.transparent,
                                         height: 4,
                                       )
@@ -102,9 +97,10 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
                                       Text(
                                         "جدول الترتيب",
                                         style: TextStyle(
+                                          fontFamily: 'cairo',
                                           fontSize: 25,
                                           color: leaguetab == 1
-                                              ? Colors.green
+                                              ? accentcolor
                                               : Colors.grey,
                                         ),
                                       ),
@@ -113,7 +109,7 @@ class _LeaguesfixturescreenState extends State<Leaguesfixturescreen> {
                                       ),
                                       Container(
                                         color: leaguetab == 1
-                                            ? Colors.green
+                                            ? accentcolor
                                             : Colors.transparent,
                                         height: 4,
                                       )

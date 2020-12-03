@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:gulf_football/models/Leagues.dart';
-import 'package:gulf_football/models/country.dart';
 import 'package:gulf_football/models/teams.dart';
 import 'package:http/http.dart';
 

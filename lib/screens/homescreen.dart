@@ -1,17 +1,13 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gulf_football/components/profileoptioncard.dart';
 import 'package:gulf_football/config/colors.dart';
-import 'package:gulf_football/config/provider.dart';
 import 'package:gulf_football/screens/favouritesscreen.dart';
 import 'package:gulf_football/screens/gamescreen.dart';
 import 'package:gulf_football/screens/homenewsscrren.dart';
 import 'package:gulf_football/screens/newsscreen.dart';
 import 'package:gulf_football/screens/nointernetscreen.dart';
 import 'package:gulf_football/screens/profileoptions.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -47,7 +43,8 @@ class _HomescreenState extends State<Homescreen> {
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedIconTheme: IconThemeData(color: accentcolor),
-          selectedLabelStyle: TextStyle(color: accentcolor),
+          selectedLabelStyle:
+              TextStyle(color: accentcolor, fontFamily: 'cairo'),
           unselectedItemColor: textcolor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

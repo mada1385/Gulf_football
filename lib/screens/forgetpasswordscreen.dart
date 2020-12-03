@@ -5,8 +5,6 @@ import 'package:gulf_football/components/customtextfield.dart';
 import 'package:gulf_football/components/texts.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
-import 'package:gulf_football/screens/homescreen.dart';
-import 'package:gulf_football/screens/signupscreen.dart';
 
 import 'nointernetscreen.dart';
 

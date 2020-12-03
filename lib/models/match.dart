@@ -9,30 +9,37 @@ class SoccerMatch {
   Goal goal;
   Matchstats stats;
   Lineup lineup;
+  Goals goals;
+  Cards cards;
 
-  SoccerMatch(
-      this.fixture, this.home, this.away, this.goal, this.stats, this.lineup);
+  SoccerMatch(this.fixture, this.home, this.away, this.goal, this.stats,
+      this.lineup, this.goals, this.cards);
 
   factory SoccerMatch.fromJson(Map<String, dynamic> json) {
     return SoccerMatch(
-        Fixture.fromJson(json),
-        HomeTeam.fromJson(json),
-        AwayTeam.fromJson(json),
-        Goal.fromJson(json),
-        Matchstats.fromJson(json),
-        Lineup.fromJson(json));
+      Fixture.fromJson(json),
+      HomeTeam.fromJson(json),
+      AwayTeam.fromJson(json),
+      Goal.fromJson(json),
+      Matchstats.fromJson(json),
+      Lineup.fromJson(json),
+      Goals.fromJson(json),
+      Cards.fromJson(json),
+    );
   }
 }
 
 //here we will store the fixture
 class Fixture {
+  String time;
   String id;
   String date;
   Status status;
-  Fixture(this.id, this.date, this.status);
+  Fixture(this.id, this.date, this.status, this.time);
 
   factory Fixture.fromJson(Map<String, dynamic> json) {
-    return Fixture(json['match_id'], json['match_date'], Status.fromJson(json));
+    return Fixture(json['match_id'], json['match_date'], Status.fromJson(json),
+        json['match_time']);
   }
 }
 
@@ -110,6 +117,26 @@ class Matchstats {
   Matchstats(this.stats);
   factory Matchstats.fromJson(Map<String, dynamic> json) {
     return Matchstats(json["statistics"]);
+  }
+}
+
+class Goals {
+  List goals;
+
+  Goals(this.goals);
+
+  factory Goals.fromJson(Map<String, dynamic> json) {
+    return Goals(json["goalscorer"]);
+  }
+}
+
+class Cards {
+  List cards;
+
+  Cards(this.cards);
+
+  factory Cards.fromJson(Map<String, dynamic> json) {
+    return Cards(json["cards"]);
   }
 }
 

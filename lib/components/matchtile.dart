@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image/network.dart';
+import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:gulf_football/models/match.dart';
 import 'package:gulf_football/screens/matchdetailsscreen.dart';
@@ -62,7 +63,7 @@ Widget matchTile(SoccerMatch match, BuildContext context) {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.green,
+                        color: accentcolor,
                         fontSize: SizeConfig.blockSizeVertical * 4,
                       ),
                     ),
@@ -86,10 +87,10 @@ Widget matchTile(SoccerMatch match, BuildContext context) {
                 ],
               ),
               SizedBox(
-                height: SizeConfig.blockSizeVertical * 2,
+                height: SizeConfig.blockSizeVertical * 1,
               ),
               Text(
-                status,
+                status == "" ? match.fixture.time : status,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey,

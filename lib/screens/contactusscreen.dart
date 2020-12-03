@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gulf_football/components/texts.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
-
 import 'nointernetscreen.dart';
 
 class Contactusscreen extends StatelessWidget {
@@ -41,7 +40,7 @@ class Contactusscreen extends StatelessWidget {
                           children: [
                             Contenttext(
                               data: "احصل على المساعدة والدعم أو تواصل معنا",
-                              size: SizeConfig.blockSizeVertical * 2.5,
+                              size: SizeConfig.blockSizeVertical * 2,
                             ),
                           ],
                         ),

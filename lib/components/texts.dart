@@ -13,6 +13,7 @@ class Boldaccectcolor extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
+          fontFamily: 'cairo',
           color: accentcolor,
           fontSize: SizeConfig.blockSizeVertical * 3,
           fontWeight: FontWeight.bold),
@@ -32,7 +33,32 @@ class Contenttext extends StatelessWidget {
     return Text(
       data,
       style: TextStyle(
-          color: textcolor, fontSize: size, fontWeight: FontWeight.normal),
+        color: textcolor,
+        fontSize: size,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'cairo',
+      ),
+    );
+  }
+}
+
+class Tittletext extends StatelessWidget {
+  final String data;
+  final double size;
+
+  const Tittletext({Key key, @required this.data, @required this.size})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      data,
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: size,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'cairo',
+      ),
     );
   }
 }

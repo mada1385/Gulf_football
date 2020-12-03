@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/provider.dart';
-import 'package:gulf_football/services/footballapi.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

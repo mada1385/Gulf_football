@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:gulf_football/models/match.dart';
 import 'package:http/http.dart';
 
 class StandiingAPI {

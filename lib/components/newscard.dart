@@ -1,7 +1,6 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image/network.dart';
-import 'package:gulf_football/config/colors.dart';
 import 'package:gulf_football/config/mediaqueryconfig.dart';
 import 'package:gulf_football/models/news.dart';
 
@@ -52,7 +51,8 @@ class Newscard extends StatelessWidget {
                   Flexible(
                     child: Text(
                       news.title,
-                      style: TextStyle(color: textcolor),
+                      style:
+                          TextStyle(color: Colors.black87, fontFamily: 'cairo'),
                     ),
                   )
                 ],

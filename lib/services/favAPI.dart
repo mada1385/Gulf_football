@@ -1,10 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:gulf_football/config/provider.dart';
-import 'package:gulf_football/models/match.dart';
 import 'package:gulf_football/models/teams.dart';
 import 'package:http/http.dart';
-import 'package:provider/provider.dart';
 
 class FavouriteAPI {
   Future postfavourite(List<Teams> x, String token) async {
@@ -98,6 +94,31 @@ class FavouriteAPI {
             "Accept": "application/json"
           });
       print("live match stayus code ${res.statusCode}");
+      var body = jsonDecode(res.body);
+      print(res.body);
+      if (res.statusCode == 200) {
+        print("send sucssefuly");
+        return body;
+      } else {
+        print("failed");
+        return body;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future getFavMatches(String token, String date) async {
+    try {
+      Response res = await get(
+          "http://gulf-goal.herokuapp.com/api/teams/following-coming-matches/$date",
+          headers: {
+            "date": date,
+            "Authorization": "bearer ${token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          });
+      print("fav match stayus code ${res.statusCode}");
       var body = jsonDecode(res.body);
       print(res.body);
       if (res.statusCode == 200) {

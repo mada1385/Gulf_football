@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gulf_football/config/colors.dart';
 
 class Teamcard extends StatelessWidget {
   final String teamname, logourl;
@@ -21,6 +20,7 @@ class Teamcard extends StatelessWidget {
           teamname,
           textAlign: TextAlign.center,
           style: TextStyle(
+            fontFamily: 'cairo',
             color: Colors.grey,
             fontSize: 16.0,
           ),

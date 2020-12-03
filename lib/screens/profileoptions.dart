@@ -27,6 +27,7 @@ class _ProfileoptionsState extends State<Profileoptions> {
   bool isSwitched = false;
 
   Future getImage() async {
+    // ignore: deprecated_member_use
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
     setState(() {
@@ -39,7 +40,7 @@ class _ProfileoptionsState extends State<Profileoptions> {
     final RenderBox box = context.findRenderObject();
 
     Share.share(link,
-        subject: "check my folio",
+        subject: "check my new app",
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 
@@ -51,26 +52,23 @@ class _ProfileoptionsState extends State<Profileoptions> {
         body: SafeArea(
           child: SizedBox.expand(
             child: Container(
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 2,
-                          offset: Offset(0, .75))
-                    ], color: Colors.white),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            await getImage();
-                          },
-                          child: Provider.of<Userprovider>(context).token ==
-                                  null
+              child: Theme(
+                data: ThemeData(accentColor: accentcolor),
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(boxShadow: [
+                        BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 2,
+                            offset: Offset(0, .75))
+                      ], color: Colors.white),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Provider.of<Userprovider>(context).token == null
                               ? Signinchecher()
                               : Column(
                                   children: [
@@ -87,13 +85,23 @@ class _ProfileoptionsState extends State<Profileoptions> {
                                       ),
                                       alignment: Alignment.topRight,
                                     ),
-                                    CircleAvatar(
-                                        maxRadius: 50,
-                                        backgroundImage: _image != null
-                                            ? FileImage(_image)
-                                            : AssetImage(
-                                                "asset/nopic.jpg",
-                                              )),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        await getImage();
+                                        await Authapi().postimage(
+                                            _image,
+                                            Provider.of<Userprovider>(context,
+                                                    listen: false)
+                                                .token);
+                                      },
+                                      child: CircleAvatar(
+                                          maxRadius: 50,
+                                          backgroundImage: _image != null
+                                              ? FileImage(_image)
+                                              : AssetImage(
+                                                  "asset/nopic.jpg",
+                                                )),
+                                    ),
                                     SizedBox(
                                       height: 10,
                                     ),
@@ -107,83 +115,84 @@ class _ProfileoptionsState extends State<Profileoptions> {
                                     ),
                                   ],
                                 ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Profileoptioncard(
+                          icon: Switch(
+                            value: isSwitched,
+                            onChanged: (value) {
+                              HapticFeedback.mediumImpact();
+                              setState(() {
+                                isSwitched = value;
+                                print(isSwitched);
+                              });
+                            },
+                            activeTrackColor: accentcolor,
+                            activeColor: accentcolor,
+                          ),
+                          title: "دفع الاشعارات",
+                        ),
+                        Profileoptioncard(
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Aboutthecomapayscreen()));
+                          },
+                          // icon: Icon(Icons.person),
+                          title: "عن الشركة",
+                        ),
+                        Profileoptioncard(
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Contactusscreen()));
+                          },
+                          // icon: Icon(Icons.payment),
+                          title: "اتصل بنا",
+                        ),
+                        Profileoptioncard(
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Termsofusescreen()));
+                          },
+                          // icon: Icon(Icons.call),
+                          title: "شروط الخدمة",
+                        ),
+                        Profileoptioncard(
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Privacypolicyscreen()));
+                          },
+                          // icon: Icon(Icons.payment),
+                          title: "سياسة الخصوصية",
+                        ),
+                        Profileoptioncard(
+                          // icon: Icon(Icons.payment),
+                          title: "شارك التطبيق",
+
+                          ontap: () async {
+                            share(context, "share my app");
+                          },
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Profileoptioncard(
-                        icon: Switch(
-                          value: isSwitched,
-                          onChanged: (value) {
-                            HapticFeedback.mediumImpact();
-                            setState(() {
-                              isSwitched = value;
-                              print(isSwitched);
-                            });
-                          },
-                          activeTrackColor: accentcolor,
-                          activeColor: accentcolor,
-                        ),
-                        title: "دفع الاشعارات",
-                      ),
-                      Profileoptioncard(
-                        ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Aboutthecomapayscreen()));
-                        },
-                        // icon: Icon(Icons.person),
-                        title: "عن الشركة",
-                      ),
-                      Profileoptioncard(
-                        ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Contactusscreen()));
-                        },
-                        // icon: Icon(Icons.payment),
-                        title: "اتصل بنا",
-                      ),
-                      Profileoptioncard(
-                        ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Termsofusescreen()));
-                        },
-                        // icon: Icon(Icons.call),
-                        title: "شروط الخدمة",
-                      ),
-                      Profileoptioncard(
-                        ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Privacypolicyscreen()));
-                        },
-                        // icon: Icon(Icons.payment),
-                        title: "سياسة الخصوصية",
-                      ),
-                      Profileoptioncard(
-                        // icon: Icon(Icons.payment),
-                        title: "شارك التطبيق",
-
-                        ontap: () async {
-                          share(context, "share my app");
-                        },
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
